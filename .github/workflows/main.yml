@@ -1,4 +1,4 @@
-name: opntransmit-python-check
+name: opentransmit-python-check
 
 on: [push]
 
