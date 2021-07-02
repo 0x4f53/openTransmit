@@ -1,12 +1,14 @@
 #!/bin/bash
 
+chmod +x linux_install.sh
+chmod +x linux_stop.sh
+
 # check if Samba daemon and NetBIOS daemon are installed
-if ! command -v smbd || ! command -v nmbd !&> /dev/null
+if ! command -v smbd !&> /dev/null
 then
     echo "Couldn't find Samba daemon and / or NetBIOS daemon"
     chmod +x linux_install.sh
     ./linux_install
-    exit
 fi
 
 # get current user
@@ -48,6 +50,8 @@ printf "${pin}\n${pin}\n" | sudo smbpasswd -a -s $username
 #replace local conf file with backup
 rm smbtransfer.conf
 mv "${filename}.backup" $filename
+
+
 
 # restart server
 sudo systemctl unmask smb nmb
