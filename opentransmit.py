@@ -94,14 +94,17 @@ if __name__ == "__main__":
     print("\nMake sure your computer and iPhone are on the same network.\nThis can be either WiFi, portable hotspot or USB tethering.\n")
     input("Press ENTER⏎ to continue\n")
 
-    command = "cd lib/scripts/linux/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
-    os.system(command)
+    start_command = "cd lib/scripts/linux/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
+    os.system(start_command)
 
     print("Scan the QR code below in your camera app")
     printQRCode(generateURL())
-    print("Password: " + colors.WARNING + password + colors.ENDC)
-    print("\nYou can also go to the Files app, tap the 3 dots \'•••\', then tap \'Connect to Server\' and enter " + generateURL() + " in the \'Server\' field.")
-    
-    print  ("----------------------------------")
-    print  ("")
+    print(colors.WARNING + "Password: " + password + colors.ENDC)
+    print("\nYou can also go to the Files app, tap the 3 dots \'•••\',\nthen tap \'Connect to Server\' and enter " + generateURL() + " in the \'Server\' field.")
+    print("Make sure to enter the password above!")
+    print("----------------------------------")
+    input("Press ENTER⏎ to quit")
+    stop_command = "cd lib/scripts/linux/ && chmod +x linux_stop.sh && ./linux_stop.sh"
+    os.system(stop_command)
+    exit()
     pass
