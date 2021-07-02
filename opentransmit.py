@@ -76,10 +76,6 @@ def generateURL():
     url = "smb://" + username + "@" + str(localIP())
     return url
 
-def lastMenu():
-    print("")
-
-
 if __name__ == "__main__":
     from sys import platform
     import random
@@ -87,8 +83,13 @@ if __name__ == "__main__":
         print ("OpenTransmit doesn't support Windows and macOS.")
         exit()
 
-    import os, subprocess
-    password = str(random.randint(1000, 9999))
+    import os, subprocess, sys
+    password = ''
+    if len(sys.argv) > 1:
+        password = sys.argv[1]
+    else:
+        password = str(random.randint(1000, 9999))
+
     initialize()
     startupMenu()
     print("\nMake sure your computer and iPhone are on the same network.\nThis can be either WiFi, portable hotspot or USB tethering.\n")
