@@ -1,4 +1,4 @@
-name: opentransmit-python-check
+name: test install
 
 on: [push]
 
