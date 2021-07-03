@@ -1,3 +1,23 @@
+long_license = """
+ OpenTransmit - Locally access your computer from iOS' Files App. 
+    Copyright (C) 2020 Owais Shaikh
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+"""
+
+short_license = """OpenTransmit  Copyright (C) 2020 Owais Shaikh\n
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type `show c' for details. """
+
 class colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -19,12 +39,15 @@ def initialize():
         import random
     except:
         import os, subprocess
-        install_command = "pip install -r requirements.txt"
+        install_pydeps_command = "pip install -r requirements.txt"
+        install_sysdeps_command = "cd lib/scripts/linux/ && chmod +x linux_install.sh &&  sh linux_install.sh"
         install_deps_prompt = input ("Couldn't find some dependencies. Try to install them? (Y/n) ")
         if "y" in install_deps_prompt.lower():
-            os.system(install_command)
+            os.system(install_pydeps_command)
+            os.system(install_sysdeps_command)
             _ = subprocess.call('clear' if os.name =='posix' else 'cls')
-            print("Done. Re-run SMBTransfer to continue!")
+            print("Done. Re-run OpenTransmit to continue!")
+            exit()
         else:
             _ = subprocess.call('clear' if os.name =='posix' else 'cls')
             print("Exiting...")
@@ -52,13 +75,18 @@ def startSMBServer():
     else: #Windows
         pass
 
-def startupMenu():
-    print("\n**********************************")
-    print  ("||        OpenTransmit          ||")
-    print  ("----------------------------------")
-    print  (" > Your local IP: "+localIP())
-    print  ("----------------------------------\n")
+def startSplash():
+    _ = subprocess.call('clear' if os.name =='posix' else 'cls')
+    print("\n------------------------------------------------")
+    print  ("||           O p e n T r a n s m i t          ||")
+    print  ("|| https://github.com/4f77616973/openTransmit ||")
+    print  ("------------------------------------------------\n")
 
+def printLicense():
+    print (short_license)
+    import time
+    time.sleep(2)
+    _ = subprocess.call('clear' if os.name =='posix' else 'cls')
 
 def printQRCode(url):
     import pyqrcode
@@ -91,9 +119,11 @@ if __name__ == "__main__":
         password = str(random.randint(1000, 9999))
 
     initialize()
-    startupMenu()
-    print("\nMake sure your computer and iPhone are on the same network.\nThis can be either WiFi, portable hotspot or USB tethering.\n")
-    input("Press ENTER⏎ to continue\n")
+    startSplash()
+    printLicense()
+    startSplash()
+    print("Make sure your computer and iPhone are on the same network\n(WiFi, portable hotspot or USB tethering)\n")
+    input("Press ENTER⏎ to continue")
 
     start_command = "cd lib/scripts/linux/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
     os.system(start_command)
@@ -101,11 +131,11 @@ if __name__ == "__main__":
     print("Scan the QR code below in your camera app")
     printQRCode(generateURL())
     print(colors.WARNING + "Password: " + password + colors.ENDC)
-    print("\nYou can also go to the Files app, tap the 3 dots \'•••\',\nthen tap \'Connect to Server\' and enter " + generateURL() + " in the \'Server\' field.")
-    print("Make sure to enter the password above!")
+    print("\nYou can also go to the Files app, tap the 3 dots \'•••\',\nthen tap \'Connect to Server\' and enter " + generateURL() + "\nin the \'Server\' field. Make sure to enter the password above!")
     print("----------------------------------")
     input("Press ENTER⏎ to quit")
-    stop_command = "cd lib/scripts/linux/ && chmod +x linux_stop.sh && ./linux_stop.sh"
+    stop_command = "cd lib/scripts/linux/ && chmod +x linux_stop.sh &&  sh linux_stop.sh"
     os.system(stop_command)
+    print("Bye!")
     exit()
     pass
