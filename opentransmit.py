@@ -1,5 +1,5 @@
 long_license = """
- OpenTransmit - Locally access your computer from iOS' Files App. 
+ openTransmit - Locally access your computer from iOS' Files App. 
     Copyright (C) 2020 Owais Shaikh
 
     This program is free software: you can redistribute it and/or modify
@@ -13,7 +13,7 @@ long_license = """
     GNU General Public License for more details.
 """
 
-short_license = """OpenTransmit  Copyright (C) 2020 Owais Shaikh\n
+short_license = """openTransmit  Copyright (C) 2020 Owais Shaikh\n
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions; See the GNU General Public License for more details."""
@@ -78,7 +78,7 @@ def startSMBServer():
 def startSplash():
     _ = subprocess.call('clear' if os.name =='posix' else 'cls')
     print("\n------------------------------------------------")
-    print  ("||           O p e n T r a n s m i t          ||")
+    print  ("||           o p e n T r a n s m i t          ||")
     print  ("|| https://github.com/4f77616973/openTransmit ||")
     print  ("------------------------------------------------\n")
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     from sys import platform
     import random
     if platform == "darwin" or platform == "win32": # Windows or macOS
-        print ("OpenTransmit doesn't support Windows and macOS.")
+        print ("openTransmit doesn't support Windows and macOS.")
         exit()
 
     import os, subprocess, sys
