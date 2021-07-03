@@ -41,23 +41,16 @@ if ! grep -q "force" "$filename"; then
     echo "write list = $username" >> $filename
 fi
 
-#move config over
+#backup default config if any
 filename_to_replace=/etc/samba/smb.conf
-if test -f "$filename_to_replace"; then
-    echo "$filename_to_replace exists. Backing up old conf file and replacing."
-    sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.previous
+if test -f "${filename_to_replace}"; then
+    echo "${filename_to_replace} exists. Backing up old conf file and replacing."
+    sudo cp "${filename_to_replace}" "${filename_to_replace}.previous"
 else
     echo "No config in /etc/samba/. Placing generated config in directory."
 fi
 
 pin=$1
-
-#backup default config if any
-default_config_file=/etc/samba/smb.conf
-
-if test -f "$default_config_file"; then
-    sudo mv default_config_file "${default_config_file}.previous"
-fi
 
 #place file
 sudo cp smbtransfer.conf /etc/samba/

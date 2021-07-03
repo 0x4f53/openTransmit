@@ -20,6 +20,7 @@ previous_file=/etc/samba/smb.conf.previous
 if test -f "$previous_file"; then
     sudo rm /etc/samba/smb.conf
     sudo mv /etc/samba/smb.conf.previous /etc/samba/smb.conf
+    echo "Replaced with previous config file."
 fi
 
 # stop samba server

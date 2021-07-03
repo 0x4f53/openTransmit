@@ -9,14 +9,14 @@ long_license = """
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 """
 
 short_license = """OpenTransmit  Copyright (C) 2020 Owais Shaikh\n
-This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
-under certain conditions; type `show c' for details. """
+under certain conditions; See the GNU General Public License for more details."""
 
 class colors:
     HEADER = '\033[95m'
@@ -136,6 +136,7 @@ if __name__ == "__main__":
     input("Press ENTER⏎ to quit")
     stop_command = "cd lib/scripts/linux/ && chmod +x linux_stop.sh &&  sh linux_stop.sh"
     os.system(stop_command)
+    _ = subprocess.call('clear' if os.name =='posix' else 'cls')
     print("Bye!")
     exit()
     pass
