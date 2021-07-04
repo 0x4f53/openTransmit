@@ -78,8 +78,8 @@ def startSMBServer():
 def startSplash():
     _ = subprocess.call('clear' if os.name =='posix' else 'cls')
     print("\n------------------------------------------------")
-    print  ("||           o p e n T r a n s m i t          ||")
-    print  ("|| https://github.com/4f77616973/openTransmit ||")
+    print  ("|            o p e n T r a n s m i t           |")
+    print  ("|  https://github.com/4f77616973/openTransmit  |")
     print  ("------------------------------------------------\n")
 
 def printLicense():
