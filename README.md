@@ -10,25 +10,41 @@
 
 A quick-and-dirty Linux Python script to setup a local SMB server and display its QR Code to use with iOS's Files.app.
 
-## HOW TO INSTALL
+## HOW TO
 
 <!--### Via PyPI / pip
-
 Make sure you have Python and pip installed, then open a terminal and type `pip install opentransmit`.-->
 
-### Via clone
+### Download via clone
 
 Make sure you have Git, Python and pip installed, then open a terminal and type `git clone https://github.com/4f77616973/openTransmit`.
 
-## HOW TO USE
+
+### Install
+
+1. Switch into the directory via `cd openTransmit` 
+2. Make install script executable via `chmod +x install.sh`
+3. Run the script via `./install.sh`
+
+### Uninstall
+
+2. Make uninstall script executable via `chmod +x uninstall.sh`
+3. Run the script via `./uninstall.sh`
+
+### Usage
 
 <img src = "preview.png" alt = "openTransmit preview">
 
-1. Run the script by changing to its directory and typing `python opentransmit.py`. <!-- If installed via pip, simply type opentransmit-->
+1. Run the script by changing to its directory and typing `python opentransmit.py`. If installed, simply type `opentransmit`. _**Note:** you can also specify a custom password via a flag. To do this, run `python opentransmit.py asdf` or `python opentransmit.py asdf`, where `asdf` is the password._
+2. Open the camera app on your iPhone / iPad / iPod Touch running iOS 11+
+3. Scan the QR code displayed on the terminal and tap on the 'Files' notification that appears
+4. Tap 'Connect' on the top right corner, then enter the password displayed below the QR Code
+5. Once done, hit enter on your computer to stop the script
 
-_**Note:** you can also specify a custom password via a flag. To do this, run `python opentransmit.py asdf`, where `asdf` is the password._
+## LICENSE
 
-2. Open the camera app on your iPhone / iPad / iPod Touch running iOS 11+.
-3. Scan the QR code displayed on the terminal and tap on the 'Files' notification that appears.
-4. Tap 'Connect' on the top right corner, then enter the password displayed below the QR Code.
-5. Once done, hit enter on your computer to stop the script.
+[Copyright © 2021 Owais Shaikh](LICENSE)
+
+This project is licensed under the GNU General Public License Version 3 (GPL v3).
+
+GitLab: [ThomasCat](https://gitlab.com/ThomasCat) | GitHub: [4f77616973](https://github.com/4f77616973) | Contact: [Email](mailto://0x4f@tuta.io)

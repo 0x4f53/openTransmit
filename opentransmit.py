@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 long_license = """
  openTransmit - Locally access your computer from iOS' Files App. 
     Copyright (C) 2020 Owais Shaikh
@@ -40,7 +41,7 @@ def initialize():
     except:
         import os, subprocess
         install_pydeps_command = "pip install -r requirements.txt"
-        install_sysdeps_command = "cd lib/scripts/linux/ && chmod +x linux_install.sh &&  sh linux_install.sh"
+        install_sysdeps_command = "cd lib/ && chmod +x linux_install.sh &&  sh linux_install.sh"
         install_deps_prompt = input ("Couldn't find some dependencies. Try to install them? (Y/n) ")
         if "y" in install_deps_prompt.lower():
             os.system(install_pydeps_command)
@@ -125,7 +126,7 @@ if __name__ == "__main__":
     print("Make sure your computer and iPhone are on the same network\n(WiFi, portable hotspot or USB tethering)\n")
     input("Press ENTER⏎ to continue")
 
-    start_command = "cd lib/scripts/linux/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
+    start_command = "cd lib/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
     os.system(start_command)
 
     print("Scan the QR code below in your camera app")
@@ -134,9 +135,9 @@ if __name__ == "__main__":
     print("\nYou can also go to the Files app, tap the 3 dots \'•••\',\nthen tap \'Connect to Server\' and enter " + generateURL() + "\nin the \'Server\' field. Make sure to enter the password above!")
     print("----------------------------------")
     input("Press ENTER⏎ to quit")
-    stop_command = "cd lib/scripts/linux/ && chmod +x linux_stop.sh &&  sh linux_stop.sh"
+    stop_command = "cd lib/ && chmod +x linux_stop.sh &&  sh linux_stop.sh"
     os.system(stop_command)
     _ = subprocess.call('clear' if os.name =='posix' else 'cls')
-    print("Bye!")
+    print("Bye!  :)")
     exit()
     pass
