@@ -35,7 +35,7 @@ Make sure you have Git, Python and pip installed, then open a terminal and type 
 
 <img src = "preview.png" alt = "openTransmit preview">
 
-1. Run the script by changing to its directory and typing `python opentransmit.py`. If installed, simply type `opentransmit`. _**Note:** you can also specify a custom password via a flag. To do this, run `python opentransmit.py asdf` or `python opentransmit.py asdf`, where `asdf` is the password._
+1. Run the script by changing to its directory and typing `python opentransmit.py`. If installed, simply type `opentransmit`. _**Note:** you can also specify a custom password via a flag. To do this, run `python opentransmit.py asdf` or `opentransmit asdf`, where `asdf` is the password._
 2. Open the camera app on your iPhone / iPad / iPod Touch running iOS 11+
 3. Scan the QR code displayed on the terminal and tap on the 'Files' notification that appears
 4. Tap 'Connect' on the top right corner, then enter the password displayed below the QR Code
