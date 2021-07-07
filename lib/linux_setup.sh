@@ -13,7 +13,9 @@
 
 #!/bin/bash
 
-sudo chmod 755 ../openTransmit
+if test -f "/opt/openTransmit"; then # make accessible if installed
+    sudo chmod 755 /opt/openTransmit
+fi
 
 chmod +x linux_install.sh
 chmod +x linux_stop.sh
