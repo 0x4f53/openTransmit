@@ -13,6 +13,8 @@
 
 #!/bin/bash
 
+sudo chmod 755 ../openTransmit
+
 chmod +x linux_install.sh
 chmod +x linux_stop.sh
 
