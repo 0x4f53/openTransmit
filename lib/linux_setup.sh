@@ -13,10 +13,6 @@
 
 #!/bin/bash
 
-if [ -d "/opt/openTransmit" ]; then # make accessible if installed
-    sudo chmod 755 /opt/openTransmit
-fi
-
 chmod +x linux_install.sh
 chmod +x linux_stop.sh
 
@@ -47,7 +43,7 @@ fi
 
 #backup default config if any
 filename_to_replace=/etc/samba/smb.conf
-if [ -d "${filename_to_replace}" ]; then
+if test -f "${filename_to_replace}"; then
     echo "${filename_to_replace} exists. Backing up old conf file and replacing."
     sudo cp "${filename_to_replace}" "${filename_to_replace}.previous"
 else
