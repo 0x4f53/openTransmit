@@ -1,9 +1,3 @@
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/lib
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/install.sh
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/opentransmit.py
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/preview.png
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/requirements.txt
-file:///home/owais/Desktop/openTransmit-65ae4258f52a52da551fe8872a5a19ac5b012e9f/uninstall.sh
 [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-blue?style=flat&logo=github)](https://opensource.org/)
 [![License](https://img.shields.io/badge/License-GPLv3-purple?style=flat&logo=libreoffice)](LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg?style=flat&logo=symantec)](https://github.com/4f77616973/GetPerms/graphs/commit-activity)
