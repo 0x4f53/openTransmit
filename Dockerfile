@@ -22,6 +22,8 @@ RUN yes | pip install -r requirements.txt
 # Expose port for SMB over TCP
 EXPOSE 139
 EXPOSE 445
+# Run service because Docker doesn't support systemctl
+ENTRYPOINT service smb restart && service nmb restart
 # Run opentransmit
 CMD ["opentransmit.py"]
 ENTRYPOINT ["python3"]
