@@ -23,7 +23,9 @@ RUN yes | pip install -r requirements.txt
 EXPOSE 139
 EXPOSE 445
 # Run service because Docker doesn't support systemctl
-ENTRYPOINT service smb restart && service nmb restart
+CMD smb start && nmb start
+ENTRYPOINT service smb start && /bin/bash
+ENTRYPOINT service nmb start && /bin/bash
 # Run opentransmit
 CMD ["opentransmit.py"]
 ENTRYPOINT ["python3"]
