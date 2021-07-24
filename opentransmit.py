@@ -124,7 +124,7 @@ if __name__ == "__main__":
     printLicense()
     startSplash()
     print("Make sure your computer and iPhone are on the same network\n(WiFi, portable hotspot or USB tethering)\n")
-    input("Press ENTER⏎ to continue")
+    input("Press ENTER to continue")
 
     start_command = "cd lib/ && chmod +x linux_setup.sh && ./linux_setup.sh " + password
     os.system(start_command)
@@ -132,9 +132,9 @@ if __name__ == "__main__":
     print("Scan the QR code below in your camera app")
     printQRCode(generateURL())
     print(colors.WARNING + "Password: " + password + colors.ENDC)
-    print("\nYou can also go to the Files app, tap the 3 dots \'•••\',\nthen tap \'Connect to Server\' and enter " + generateURL() + "\nin the \'Server\' field. Make sure to enter the password above!")
+    print("\nYou can also go to the Files app, tap the 3 dots \'...\',\nthen tap \'Connect to Server\' and enter " + generateURL() + "\nin the \'Server\' field. Make sure to enter the password above!")
     print("----------------------------------")
-    input("Press ENTER⏎ to quit")
+    input("Press ENTER to quit")
     stop_command = "cd lib/ && chmod +x linux_stop.sh &&  sh linux_stop.sh"
     os.system(stop_command)
     _ = subprocess.call('clear' if os.name =='posix' else 'cls')
