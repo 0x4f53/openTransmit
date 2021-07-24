@@ -12,22 +12,33 @@ A quick-and-dirty Linux Python script to setup a local SMB server and display it
 
 ## HOW TO
 
-<!--### Via PyPI / pip
-Make sure you have Python and pip installed, then open a terminal and type `pip install opentransmit`.-->
-
 ### Download via clone
 
 Make sure you have Git, Python and pip installed, then open a terminal and type `git clone https://github.com/4f77616973/openTransmit`.
 
+### Run via Docker
+1. [Install and enable Docker](https://docs.docker.com/engine/install/) on your system.
+2. Build the image from the Dockerfile by running `sudo docker build -t opentransmit`.
+3. Run the Docker image via `sudo docker run -it opentransmit opentransmit.py`.
+
+_**Note:** to specify a custom password via a flag, run `sudo docker run -it opentransmit opentransmit.py asdf` where `asdf` is the password._
+
+<b>- OR -</b>
+
+### Run via Bash
+
+Run the script by changing to its directory and typing `python opentransmit.py`. 
+
+_**Note:** to specify a custom password via a flag, run `python opentransmit.py asdf` where `asdf` is the password._
+
 ### Usage
 
-<img src = "preview.png" alt = "openTransmit preview">
+1. Open the Camera app on your iPhone / iPad / iPod Touch running iOS 11+
+2. Scan the QR code displayed on the terminal and tap on the 'Files' notification that appears
+3. Tap 'Connect' on the top right corner, then enter the password displayed below the QR Code
+4. Once done, hit Enter⏎ on your computer to stop the script
 
-1. Run the script by changing to its directory and typing `python opentransmit.py`. _**Note:** you can also specify a custom password via a flag. To do this, run `python opentransmit.py asdf` where `asdf` is the password._
-2. Open the camera app on your iPhone / iPad / iPod Touch running iOS 11+
-3. Scan the QR code displayed on the terminal and tap on the 'Files' notification that appears
-4. Tap 'Connect' on the top right corner, then enter the password displayed below the QR Code
-5. Once done, hit enter on your computer to stop the script
+<img src = "preview.png" alt = "openTransmit preview">
 
 ## LICENSE
 
