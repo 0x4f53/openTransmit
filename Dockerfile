@@ -4,7 +4,7 @@ LABEL name="openTransmit"
 # working dir within docker image
 WORKDIR /usr/src/app
 ENV PYTHONPATH="/usr/src/app"
-ENV USERNAME=$USERNAME
+ENV USER=$USER
 # copy all files to docker image
 COPY . .
 # Update the image to the latest packages and download dependencies
