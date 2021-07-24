@@ -8,7 +8,7 @@ COPY . .
 # Update the image to the latest packages and download dependencies
 RUN apt update && apt upgrade -y
 RUN apt install git -y
-RUN apt install python -y
+RUN apt install python3 -y
 RUN apt install python3-pip -y
 RUN apt install samba -y
 RUN apt install samba-common -y

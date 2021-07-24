@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python3
 long_license = """
  openTransmit - Locally access your computer from iOS' Files App. 
     Copyright (C) 2020 Owais Shaikh
