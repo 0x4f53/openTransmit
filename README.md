@@ -19,7 +19,7 @@ Make sure you have Git, Python and pip installed, then open a terminal and type 
 ### Run via Docker
 1. [Install and enable Docker](https://docs.docker.com/engine/install/) on your system.
 2. Build the image from the Dockerfile by running `sudo docker build -t opentransmit`.
-3. Run the Docker image via `sudo docker run -it opentransmit opentransmit.py`.
+3. Run the Docker image via `sudo docker run -e USER=$USER -it opentransmit opentransmit.py`.
 
 _**Note:** to specify a custom password via a flag, run `sudo docker run -it opentransmit opentransmit.py asdf` where `asdf` is the password._
 
