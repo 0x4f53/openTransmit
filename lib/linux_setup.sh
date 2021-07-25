@@ -23,47 +23,94 @@ if ! [ -x "$(command -v smbd)" ]; then
     sh linux_install.sh
 fi
 
-#get current user
-username=$USER
+if ! [ -x "$(command -v sudo)" ] && [ -f /.dockerenv ]; then
+    echo "Detected Docker image"
+    #get current user
+    username=$USER
 
-#back up local conf file
-filename=smbtransfer.conf
+    #back up local conf file
+    filename=smbtransfer.conf
 
-cp $filename "${filename}.backup"
+    cp $filename "${filename}.backup"
 
-#check if smb and nmb are already running
-sudo systemctl stop smb nmb
+    #check if smb and nmb are already running
+    smbd stop
 
-if ! grep -q "force" "$filename"; then
-    echo "Generating samba config with username."
-    echo "force user = $username" >> $filename
-    echo "valid users = $username" >> $filename
-    echo "write list = $username" >> $filename
-fi
+    if ! grep -q "force" "$filename"; then
+        echo "Generating samba config with username."
+        echo "force user = $username" >> $filename
+        echo "valid users = $username" >> $filename
+        echo "write list = $username" >> $filename
+    fi
 
-#backup default config if any
-filename_to_replace=/etc/samba/smb.conf
-if test -f "${filename_to_replace}"; then
-    echo "${filename_to_replace} exists. Backing up old conf file and replacing."
-    sudo cp "${filename_to_replace}" "${filename_to_replace}.previous"
+    #backup default config if any
+    filename_to_replace=/etc/samba/smb.conf
+    if test -f "${filename_to_replace}"; then
+        echo "${filename_to_replace} exists. Backing up old conf file and replacing."
+        cp "${filename_to_replace}" "${filename_to_replace}.previous"
+    else
+        echo "No config in /etc/samba/. Placing generated config in directory."
+    fi
+
+    pin=$1
+
+    #place file
+    cp smbtransfer.conf /etc/samba/
+    mv /etc/samba/smbtransfer.conf /etc/samba/smb.conf
+    chmod 644 /etc/samba/smb.conf
+
+    #put in credentials
+    printf "${pin}\n${pin}\n" | smbpasswd -a -s $username
+
+    #replace local conf file with backup
+    rm smbtransfer.conf
+    mv "${filename}.backup" $filename
+
+    #restart server
+    smbd --foreground --log-stdout --no-process-group
 else
-    echo "No config in /etc/samba/. Placing generated config in directory."
+    #get current user
+    username=$USER
+
+    #back up local conf file
+    filename=smbtransfer.conf
+
+    cp $filename "${filename}.backup"
+
+    #check if smb and nmb are already running
+    sudo systemctl stop smb nmb
+
+    if ! grep -q "force" "$filename"; then
+        echo "Generating samba config with username."
+        echo "force user = $username" >> $filename
+        echo "valid users = $username" >> $filename
+        echo "write list = $username" >> $filename
+    fi
+
+    #backup default config if any
+    filename_to_replace=/etc/samba/smb.conf
+    if test -f "${filename_to_replace}"; then
+        echo "${filename_to_replace} exists. Backing up old conf file and replacing."
+        sudo cp "${filename_to_replace}" "${filename_to_replace}.previous"
+    else
+        echo "No config in /etc/samba/. Placing generated config in directory."
+    fi
+
+    pin=$1
+
+    #place file
+    sudo cp smbtransfer.conf /etc/samba/
+    sudo mv /etc/samba/smbtransfer.conf /etc/samba/smb.conf
+    sudo chmod 644 /etc/samba/smb.conf
+
+    #put in credentials
+    printf "${pin}\n${pin}\n" | sudo smbpasswd -a -s $username
+
+    #replace local conf file with backup
+    rm smbtransfer.conf
+    mv "${filename}.backup" $filename
+
+    #restart server
+    sudo systemctl unmask smb nmb
+    sudo systemctl start smb nmb
 fi
-
-pin=$1
-
-#place file
-sudo cp smbtransfer.conf /etc/samba/
-sudo mv /etc/samba/smbtransfer.conf /etc/samba/smb.conf
-sudo chmod 644 /etc/samba/smb.conf
-
-#put in credentials
-printf "${pin}\n${pin}\n" | sudo smbpasswd -a -s $username
-
-#replace local conf file with backup
-rm smbtransfer.conf
-mv "${filename}.backup" $filename
-
-#restart server
-sudo systemctl unmask smb nmb
-sudo systemctl start smb nmb

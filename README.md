@@ -17,11 +17,14 @@ A quick-and-dirty Linux Python script to setup a local SMB server and display it
 Make sure you have Git, Python and pip installed, then open a terminal and type `git clone https://github.com/4f77616973/openTransmit`.
 
 ### Run via Docker
-1. [Install and enable Docker](https://docs.docker.com/engine/install/) on your system.
-2. Build the image from the Dockerfile by running `sudo docker build -t opentransmit`.
-3. Run the Docker image via `sudo docker run -e USER=$USER -it opentransmit opentransmit.py`.
+Using Docker, you can avoid messing with system-level files and run Docker in a virtualized environment.
+1. [Install and enable Docker](https://docs.docker.com/engine/install/) on your system. Don't forget to start the docker daemon.
+2. Make the docker setup script executable by running `chmod +x opentransmit-docker.sh`.
+3. Run the docker script to start openTransmit in Docker.
+<!--2. Build the image from the Dockerfile by running `sudo docker build -t opentransmit`.
+3. Run the Docker image via `sudo docker run -e USER=$USER -it opentransmit opentransmit.py`.-->
 
-_**Note:** to specify a custom password via a flag, run `sudo docker run -e USER=$USER -it opentransmit opentransmit.py asdf` where `asdf` is the password._
+_**Note:** to specify a custom password via a flag, run `sudo opentransmit-docker.sh asdf` where `asdf` is the password._
 
 <b>- OR -</b>
 
